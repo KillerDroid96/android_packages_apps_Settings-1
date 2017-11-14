@@ -164,6 +164,12 @@ public class Settings extends SettingsActivity {
     public static class StorageDashboardActivity extends SettingsActivity {}
     public static class AccountDashboardActivity extends SettingsActivity {}
     public static class SystemDashboardActivity extends SettingsActivity {}
-
     public static class crDroidSettingsLayoutActivity extends SettingsActivity {}
+
+    // crDroid Additions.
+    public static class DevRunningServicesActivity extends SettingsActivity { /* empty */ }
+    public static class NavigationSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class FlingSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class SmartbarSettingsActivity extends SettingsActivity { /* empty */ }
+    public static class PulseSettingsActivity extends SettingsActivity { /* empty */ }
 }

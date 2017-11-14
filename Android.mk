@@ -40,7 +40,8 @@ LOCAL_STATIC_ANDROID_LIBRARIES := \
 LOCAL_JAVA_LIBRARIES := \
     bouncycastle \
     telephony-common \
-    ims-common
+    ims-common \
+    org.dirtyunicorns.utils
 
 LOCAL_STATIC_JAVA_LIBRARIES := \
     android-arch-lifecycle-runtime \

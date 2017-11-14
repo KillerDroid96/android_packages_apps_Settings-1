@@ -136,8 +136,12 @@ import com.android.settings.wifi.WifiInfo;
 import com.android.settings.wifi.WifiSettings;
 import com.android.settings.wifi.calling.WifiCallingSettings;
 import com.android.settings.wifi.p2p.WifiP2pSettings;
-
 import com.crdroid.settings.crDroidSettingsLayout;
+import com.crdroid.settings.crDroidSettings;
+import com.crdroid.settings.FlingSettings;
+import com.crdroid.settings.NavbarSettings;
+import com.crdroid.settings.PulseSettings;
+import com.crdroid.settings.SmartbarSettings;
 
 public class SettingsGateway {
 
@@ -264,6 +268,12 @@ public class SettingsGateway {
             ToggleBackupSettingFragment.class.getName(),
             PreviouslyConnectedDeviceDashboardFragment.class.getName(),
             crDroidSettingsLayout.class.getName(),
+            crDroidSettings.class.getName(),
+            RunningServices.class.getName(),
+            NavbarSettings.class.getName(),
+            FlingSettings.class.getName(),
+            SmartbarSettings.class.getName(),
+            PulseSettings.class.getName()
     };
 
     public static final String[] SETTINGS_FOR_RESTRICTED = {
@@ -303,5 +313,11 @@ public class SettingsGateway {
             Settings.EnterprisePrivacySettingsActivity.class.getName(),
             Settings.MyDeviceInfoActivity.class.getName(),
             Settings.crDroidSettingsLayoutActivity.class.getName(),
+            Settings.crDroidSettingsActivity.class.getName(),
+            Settings.DevRunningServicesActivity.class.getName(),
+            Settings.NavigationSettingsActivity.class.getName(),
+            Settings.FlingSettingsActivity.class.getName(),
+            Settings.SmartbarSettingsActivity.class.getName(),
+            Settings.PulseSettingsActivity.class.getName()
     };
 }
