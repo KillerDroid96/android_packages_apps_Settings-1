@@ -15,8 +15,14 @@
  */
 package com.android.settings.deviceinfo;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 import android.content.Context;
 import android.support.v7.preference.Preference;
+import android.text.TextUtils;
+import android.util.Log;
 
 import com.android.settings.core.PreferenceControllerMixin;
 import com.android.settingslib.DeviceInfoUtils;
@@ -26,6 +32,8 @@ public class KernelVersionPreferenceController extends AbstractPreferenceControl
         PreferenceControllerMixin {
 
     private static final String KEY_KERNEL_VERSION = "kernel_version";
+    private static final String FILENAME_PROC_VERSION = "/proc/version";
+    private static final String LOG_TAG = "KernelVersionPreferenceController";
 
     public KernelVersionPreferenceController(Context context) {
         super(context);
@@ -39,11 +47,36 @@ public class KernelVersionPreferenceController extends AbstractPreferenceControl
     @Override
     public void updateState(Preference preference) {
         super.updateState(preference);
-        preference.setSummary(DeviceInfoUtils.getFormattedKernelVersion(mContext));
+        preference.setSummary(getFullKernelVersion());
     }
 
     @Override
     public String getPreferenceKey() {
         return KEY_KERNEL_VERSION;
+    }
+
+    private String getFullKernelVersion() {
+        try {
+            return readLine(FILENAME_PROC_VERSION);
+        } catch (IOException e) {
+            Log.e(LOG_TAG,
+            "IO Exception when getting kernel version for Device Info screen", e);
+            return DeviceInfoUtils.getFormattedKernelVersion();
+        }
+    }
+
+    /**
+     * Reads a line from the specified file.
+     * @param filename the file to read from
+     * @return the first line, if any.
+     * @throws IOException if the file couldn't be read
+     */
+    private static String readLine(String filename) throws IOException {
+        BufferedReader reader = new BufferedReader(new FileReader(filename), 256);
+        try {
+            return reader.readLine();
+        } finally {
+            reader.close();
+        }
     }
 }
